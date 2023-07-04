@@ -1,0 +1,12 @@
+* oauth2-webmock-rspec-bug
+
+This repo reproduces a rack-oauth2 + webmock issue where rack-oauth2
+expects a response to be [[https://github.com/nov/rack-oauth2/blob/master/lib/rack/oauth2/client.rb#L216][a hash and calls ~with_indifferent_access~ on
+it]], but webmock [[https://github.com/bblimke/webmock/blob/master/lib/webmock/response.rb#L118-L123][doesn't allow a hash for a response]].
+
+** Reproduce the issue
+
+#+begin_src sh
+bundle
+bundle exec rspec spec.rb
+#+end_src
